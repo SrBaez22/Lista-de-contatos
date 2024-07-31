@@ -12,8 +12,29 @@ def ver_contatos(contatos):
     status = "⋆" if contato["Favorito"] else " "
     nome_contato = contato["contato"]
     print(f"{indice}. [{status}] {nome_contato}")
+  return
 
+#Função item 3
+def editar_contato(contatos):
+  ver_contatos(contatos)
+  indice = int(input("\nDigite o número do contato que deseja editar: "))
+  if 1 <= indice <= len(contatos):
+    novo_nome = input("Digite o novo nome do contato: ")
+    contatos[indice - 1]["contato"] = novo_nome
+    print(f"O contato {indice} foi atualizado com sucesso para {novo_nome}!")
 
+#Função item 4
+def marcar_desamrcar_fav(contatos):
+
+  return
+
+#Função item 5
+def contatos_fav():
+  return
+
+#Função item 6
+def deletar_contato():
+  return
 
 contatos = []
 while True: 
@@ -33,6 +54,12 @@ while True:
 
   elif escolha == "2":
     ver_contatos(contatos)
+  
+  elif escolha == "3":
+    editar_contato(contatos)
+
+  elif escolha == "4":
+    marcar_desamrcar_fav()
 
   elif escolha == "7":
    break
