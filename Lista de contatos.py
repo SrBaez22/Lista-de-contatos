@@ -15,22 +15,31 @@ def ver_contatos(contatos):
   return
 
 #Função item 3
-def editar_contato(contatos):
+def editar_contato(contatos, indice_contato, novo_nome):
   ver_contatos(contatos)
-  indice = int(input("\nDigite o número do contato que deseja editar: "))
-  if 1 <= indice <= len(contatos):
-    novo_nome = input("Digite o novo nome do contato: ")
-    contatos[indice - 1]["contato"] = novo_nome
-    print(f"O contato {indice} foi atualizado com sucesso para {novo_nome}!")
+  if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+    indice_contato_ajustado = int(indice_contato) - 1
+    contatos[indice_contato]["contato"] = novo_nome
+  else:
+    print("indíce de tarefa inválido.")
+  return
 
 #Função item 4
-def marcar_desamrcar_fav(contatos):
-
+def marcar_desamrcar_fav(contatos, indice_contato):
+  indice_contato_ajustado = int(indice_contato) - 1   
+  if 0<=indice_contato_ajustado<len(contatos):
+      contatos[indice_contato_ajustado]["Favorito"] = not contatos[indice_contato_ajustado]["Favorito"]
+      print(f"contato {indice_contato} agora foi atualizado.")
+  else: 
+    print("indice do contato inválido")
   return
 
 #Função item 5
-def contatos_fav():
-  return
+def contatos_fav(status):
+  if status == "⋆":
+    
+    
+ 
 
 #Função item 6
 def deletar_contato():
@@ -56,10 +65,15 @@ while True:
     ver_contatos(contatos)
   
   elif escolha == "3":
-    editar_contato(contatos)
+    indice_contato = input("digite o número do contato que voce quer editar: ")
+    novo_nome = input("digite o novo nome:")
+    editar_contato(contatos, indice_contato, novo_nome)
+    print(f"O contato {indice_contato} foi atualizado com sucesso para {novo_nome}!")
 
   elif escolha == "4":
-    marcar_desamrcar_fav()
+    ver_contatos(contatos)
+    indice_contato = input("selecione o numero do contato que você quer favoritar ou desfavoritar: ")
+    marcar_desamrcar_fav(contatos, indice_contato)
 
   elif escolha == "7":
    break
