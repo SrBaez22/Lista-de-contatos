@@ -35,14 +35,24 @@ def marcar_desamrcar_fav(contatos, indice_contato):
   return
 
 #Função item 5
-def contatos_fav(status):
-  if status == "⋆":
-    
-    
- 
+def contatos_fav(contatos):
+  favoritos = [contato for contato in contatos if contato["Favorito"]]
+  if favoritos:
+    print("\nContatos favoritos:")
+    for indice, contato in enumerate(favoritos, start=1):
+      print(f"{indice}. {contato['contato']}")
+  else:
+    print("Nenhum contato foi encontrado.")
+  return
 
 #Função item 6
-def deletar_contato():
+def deletar_contato(contatos, indice_contato):
+  indice_contato_ajustado = int(indice_contato) - 1
+  if 0 <= indice_contato_ajustado < len(contatos):
+    contato_removido = contatos.pop(indice_contato_ajustado)
+    print(f"O contato {contato_removido['contato']} foi deletado com sucesso.")
+  else:
+    print("Índice de contato inválido.")
   return
 
 contatos = []
@@ -74,6 +84,14 @@ while True:
     ver_contatos(contatos)
     indice_contato = input("selecione o numero do contato que você quer favoritar ou desfavoritar: ")
     marcar_desamrcar_fav(contatos, indice_contato)
+
+  elif escolha == "5":
+    contatos_fav(contatos)
+
+  elif escolha == "6":
+    ver_contatos(contatos)
+    indice_contato = input("Digite o número do contato que você quer deletar: ")
+    deletar_contato(contatos, indice_contato)
 
   elif escolha == "7":
    break
